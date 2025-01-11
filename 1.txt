@@ -1,0 +1,110 @@
+https://api.anilibria.tv/v3/title/schedule?filter=posters,type,status,id,code - получение расписания выхода серий
+
+https://api.anilibria.tv/v3/title?id=8693 - подробная ифа по аниме по его id
+
+https://api.anilibria.tv/v3/title?id=8693/v3/title/search?search=поднятие уровня в одиночку&filter=id,names,team,genres[0]&limit=10 - поиск аниме по названию
+
+https://static-libria.weekstorm.one/storage/releases/posters/9839/4VmVJm2h5vrKm81rsyErGVZsEgNDvjuQ.jpg - постер аниме
+
+https://cache.libria.fun/videos/media/ts/9839/1/1080/79031c6f027b53a835f60523e4a2e2d8.m3u8 - файл с видео аниме
+
+https://static-libria.weekstorm.one/storage/releases/episodes/previews/9839/1/y2F1OlI1Ak3JMmgi__face8494f4cd5964fa22da3314f650f3.jpg - превью аниме
+
+
+
+
+
+
+
+[
+    {
+        "day": 0,
+        "list": [
+            {
+                "posters": {
+                    "small": {
+                        "url": "/storage/releases/posters/8693/U9sRnevmTnDjlVibdMBvvtNfytFpmD3S.jpg",
+                        "raw_base64_file": null
+                    },
+                    "medium": {
+                        "url": "/storage/releases/posters/8693/U9sRnevmTnDjlVibdMBvvtNfytFpmD3S.jpg",
+                        "raw_base64_file": null
+                    },
+                    "original": {
+                        "url": "/storage/releases/posters/8693/U9sRnevmTnDjlVibdMBvvtNfytFpmD3S.jpg",
+                        "raw_base64_file": null
+                    }
+                },
+                "type": {
+                    "full_string": "ТВ (12 эп.), 24 мин.",
+                    "code": 1,
+                    "string": "TV",
+                    "episodes": 12,
+                    "length": 24
+                },
+                "status": {
+                    "string": "В работе",
+                    "code": 1
+                },
+                "id": 8693,
+                "code": "rozen-maiden",
+                "names": {
+                    "ru": "Девы Розена",
+                    "en": "Rozen Maiden",
+                    "alternative": null
+                },
+                "season": {
+                    "string": "осень",
+                    "code": 4,
+                    "year": 2004,
+                    "week_day": 0
+                }
+            },
+        ]
+    },
+    {
+        "day": 1,
+        "list": [
+            {
+                "posters": {
+                    "small": {
+                        "url": "/storage/releases/posters/9895/kQuK04cwBnZ8N4yzTW6Tamer5cdISc5T.jpg",
+                        "raw_base64_file": null
+                    },
+                    "medium": {
+                        "url": "/storage/releases/posters/9895/kQuK04cwBnZ8N4yzTW6Tamer5cdISc5T.jpg",
+                        "raw_base64_file": null
+                    },
+                    "original": {
+                        "url": "/storage/releases/posters/9895/kQuK04cwBnZ8N4yzTW6Tamer5cdISc5T.jpg",
+                        "raw_base64_file": null
+                    }
+                },
+                "type": {
+                    "full_string": "OVA (>1 эп.), 24 мин.",
+                    "code": 2,
+                    "string": "OVA",
+                    "episodes": 1,
+                    "length": 24
+                },
+                "status": {
+                    "string": "В работе",
+                    "code": 1
+                },
+                "id": 9895,
+                "code": "hibike-euphonium-ova",
+                "names": {
+                    "ru": "Звучи, эуфониум! ОВА",
+                    "en": "Hibike! Euphonium OVA",
+                    "alternative": null
+                },
+                "season": {
+                    "string": "осень",
+                    "code": 4,
+                    "year": 2015,
+                    "week_day": 1
+                }
+            }
+        ]
+    },
+]
