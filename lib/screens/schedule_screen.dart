@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 import '../widgets/anime/card.dart';
 
@@ -9,18 +12,56 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> animeList = _buildAnimeList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Расписание аниме'),
+        backgroundColor: Colors.pink,
+        actions: [
+          IconButton(
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedSearch02, color: Colors.black, size: 22.0),
+            onPressed: () {
+              log('Нажата иконка поиска');
+            },
+          ),
+          IconButton(
+            icon: HugeIcon(icon: HugeIcons.strokeRoundedFilter, color: Colors.black, size: 22.0),
+            onPressed: () {
+              log('Нажата иконка фильтра');
+            },
+          ),
+        ],
       ),
-      body: ListView(
-        children: _buildAnimeSchedule(),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.65,
+        ),
+        itemCount: animeList.length,
+        itemBuilder: (context, index) {
+          final item = animeList[index];
+          if (item['type'] == 'header') {
+            // Отображение заголовка дня недели
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                item['day'],
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            );
+          } else {
+            // Отображение карточки аниме
+            return AnimeCard(anime: item['anime']);
+          }
+        },
       ),
     );
   }
 
-  List<Widget> _buildAnimeSchedule() {
-    List<Widget> daySections = [];
+  List<Map<String, dynamic>> _buildAnimeList() {
+    final List<Map<String, dynamic>> animeList = [];
     final daysOfWeek = [
       "Понедельник",
       "Вторник",
@@ -36,16 +77,13 @@ class MainScreen extends StatelessWidget {
       List<dynamic> animeForDay = schedule['list'];
 
       if (animeForDay.isNotEmpty) {
-        daySections.add(Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            daysOfWeek[dayIndex],
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ));
-        daySections.addAll(animeForDay.map((anime) => AnimeCard(anime: anime)));
+        // Добавляем заголовок для каждого дня
+        animeList.add({'type': 'header', 'day': daysOfWeek[dayIndex]});
+
+        // Добавляем карточки аниме для текущего дня
+        animeList.addAll(animeForDay.map((anime) => {'type': 'anime', 'anime': anime}));
       }
     }
-    return daySections;
+    return animeList;
   }
 }

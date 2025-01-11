@@ -12,25 +12,28 @@ class AnimeCard extends StatelessWidget {
         print("ID: ${anime['id']}, Название: ${anime['names']['ru']}");
       },
       child: Card(
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              "https://static-libria.weekstorm.one${anime['posters']['original']['url']}",
-              height: 100,
-              width: 70,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(0.8),
+                topRight: Radius.circular(0.8),
+                bottomLeft: Radius.circular(0.8),
+                bottomRight: Radius.circular(0.8),
+              ),
+              child: Image.network(
+                "https://static-libria.weekstorm.one${anime['posters']['original']['url']}",
+                height: 250,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
-            SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    anime['names']['ru'] ?? "Без названия",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  Text("ID: ${anime['id']}"),
-                ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                anime['names']['ru'] ?? "Без названия",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
           ],
